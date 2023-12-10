@@ -1,18 +1,47 @@
-<app-titulo [titulo]='titulo'></app-titulo>
+<div *ngIf="alunoSelecionado">
 
-<table class="table">
-  <thead class="table-light">
-    <th scope="col">#</th>
-    <th scope="col">Nome</th>
-    <th scope="col">Sobrenome</th>
-    <th scope="col">Telefone</th>
-  </thead>
-  <tbody>
-    <tr *ngFor="let aluno of alunos">
-      <th scope="row">{{aluno.id}}</th>
-      <td>{{aluno.nome}}</td>
-      <td>{{aluno.sobrenome}}</td>
-      <td>{{aluno.telefone}}</td>
-    </tr>
-  </tbody>
-</table>
+  <div class="row">
+    <div class="col-auto me-auto">
+      <app-titulo [titulo]="'Aluno: ' + alunoSelecionado.nome"></app-titulo>
+    </div>
+    <div class="col-auto mt-1">
+      <button class="btn btn-warning" (click)="voltar()">Lista de Estudantes</button>
+    </div>
+  </div>
+
+  <form>
+    <div class="mb-3">
+      <label class="form-label">Nome</label>
+      <input type="text" value="{{ alunoSelecionado.nome }}" class="form-control">
+    </div>
+    <div class="mb-3">
+      <label class="form-label">Sobrenome</label>
+      <input type="text" value="{{ alunoSelecionado.sobrenome }}" class="form-control">
+    </div>
+    <div class="mb-3">
+      <label class="form-label">Telefone</label>
+      <input type="text" value="{{ alunoSelecionado.telefone }}" class="form-control">
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+</div>
+
+<div *ngIf="!alunoSelecionado">
+  <app-titulo [titulo]="titulo"></app-titulo>
+  <table class="table table-hover">
+    <thead class="table-light">
+      <th scope="col">#</th>
+      <th scope="col">Nome</th>
+      <th scope="col">Sobrenome</th>
+      <th scope="col">Telefone</th>
+    </thead>
+    <tbody>
+      <tr *ngFor="let aluno of alunos" style="cursor: pointer;" (click)="alunoSelect(aluno)">
+        <th scope="row">{{aluno.id}}</th>
+        <td>{{aluno.nome}}</td>
+        <td>{{aluno.sobrenome}}</td>
+        <td>{{aluno.telefone}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import { Aluno } from '../models/Aluno';
 
 @Component({
   selector: 'app-alunos',
@@ -6,7 +7,10 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./alunos.component.css'],
 })
 export class AlunosComponent {
-  public titulo = 'Alunos';
+  titulo = 'Alunos';
+  public alunoSelecionado!: Aluno;
+
+  constructor() {}
 
   public alunos = [
     { id: 1, nome: 'Marta', sobrenome: 'Kent', telefone: '54246743' },
@@ -17,4 +21,12 @@ export class AlunosComponent {
     { id: 6, nome: 'Pedro', sobrenome: 'Alvares', telefone: '234754643' },
     { id: 7, nome: 'Paulo', sobrenome: 'José', telefone: '756234654' },
   ];
+
+  alunoSelect(aluno: Aluno) {
+    this.alunoSelecionado = aluno;
+  }
+
+  voltar() {
+    this.alunoSelecionado = null;
+  }
 }
