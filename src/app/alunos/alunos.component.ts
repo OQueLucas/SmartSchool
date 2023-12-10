@@ -11,7 +11,6 @@ export class AlunosComponent implements OnInit {
   public alunoForm: FormGroup;
   titulo = 'Alunos';
   public alunoSelecionado!: Aluno;
-  public textSimple: string;
 
   constructor(private fb: FormBuilder) {
     this.criarForm();
