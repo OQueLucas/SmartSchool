@@ -11,13 +11,12 @@ export class ProfessoresComponent implements OnInit {
   titulo = 'Professores';
 
   public professores = [
-    { nome: 'Marta' },
-    { nome: 'Paula' },
-    { nome: 'Laura' },
-    { nome: 'Luiza' },
-    { nome: 'Lucas' },
-    { nome: 'Pedro' },
-    { nome: 'Paulo' },
+    { id: 1, nome: 'Lauro', disciplina: 'Matemática' },
+    { id: 2, nome: 'Roberto', disciplina: 'Física' },
+    { id: 3, nome: 'Ronaldo', disciplina: 'Português' },
+    { id: 4, nome: 'Rodrigo', disciplina: 'Inglês' },
+    { id: 5, nome: 'Alexandre', disciplina: 'Programação' },
+    { id: 6, nome: 'Fabrício', disciplina: 'Orientação a Objeto' },
   ];
 
   ngOnInit() {}

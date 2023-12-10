@@ -1,6 +1,6 @@
-<h1>
-  {{ titulo }}
-</h1>
+<app-titulo [titulo]='titulo'></app-titulo>
+
+
 
 <ul>
   <li *ngFor="let professor of professores">{{ professor.nome }}</li>

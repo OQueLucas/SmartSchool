@@ -5,20 +5,16 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './alunos.component.html',
   styleUrls: ['./alunos.component.css'],
 })
-export class AlunosComponent implements OnInit {
-  titulo = 'Alunos';
+export class AlunosComponent {
+  public titulo = 'Alunos';
 
   public alunos = [
-    { nome: 'Marta' },
-    { nome: 'Paula' },
-    { nome: 'Laura' },
-    { nome: 'Luiza' },
-    { nome: 'Lucas' },
-    { nome: 'Pedro' },
-    { nome: 'Paulo' },
+    { id: 1, nome: 'Marta', sobrenome: 'Kent', telefone: '54246743' },
+    { id: 2, nome: 'Paula', sobrenome: 'Isabela', telefone: '634562345' },
+    { id: 3, nome: 'Laura', sobrenome: 'Antonia', telefone: '641467824' },
+    { id: 4, nome: 'Luíza', sobrenome: 'Maria', telefone: '756435234' },
+    { id: 5, nome: 'Lucas', sobrenome: 'Machado', telefone: '765234895' },
+    { id: 6, nome: 'Pedro', sobrenome: 'Alvares', telefone: '234754643' },
+    { id: 7, nome: 'Paulo', sobrenome: 'José', telefone: '756234654' },
   ];
-
-  ngOnInit(): void {
-    throw new Error('Method not implemented.');
-  }
 }

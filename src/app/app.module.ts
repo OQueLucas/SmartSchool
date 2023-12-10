@@ -7,20 +7,21 @@ import { AlunosComponent } from './alunos/alunos.component';
 import { ProfessoresComponent } from './professores/professores.component';
 import { PerfilComponent } from './perfil/perfil.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { NavComponent } from './nav/nav.component';
+import { TituloComponent } from './titulo/titulo.component';
 
 @NgModule({
-  declarations: [	
+  declarations: [
     AppComponent,
+    TituloComponent,
     AlunosComponent,
-      ProfessoresComponent,
-      PerfilComponent,
-      DashboardComponent
-   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule
+    ProfessoresComponent,
+    PerfilComponent,
+    DashboardComponent,
+    NavComponent,
   ],
+  imports: [BrowserModule, AppRoutingModule],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
