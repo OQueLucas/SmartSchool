@@ -1,17 +1,31 @@
-import { Component, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Aluno } from '../models/Aluno';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-alunos',
   templateUrl: './alunos.component.html',
   styleUrls: ['./alunos.component.css'],
 })
-export class AlunosComponent {
+export class AlunosComponent implements OnInit {
+  public alunoForm: FormGroup;
   titulo = 'Alunos';
   public alunoSelecionado!: Aluno;
   public textSimple: string;
 
-  constructor() {}
+  constructor(private fb: FormBuilder) {
+    this.criarForm();
+  }
+
+  ngOnInit(): void {}
+
+  criarForm() {
+    this.alunoForm = this.fb.group({
+      nome: ['', Validators.required],
+      sobrenome: ['', Validators.required],
+      telefone: ['', Validators.required],
+    });
+  }
 
   public alunos = [
     { id: 1, nome: 'Marta', sobrenome: 'Kent', telefone: '54246743' },
@@ -23,8 +37,13 @@ export class AlunosComponent {
     { id: 7, nome: 'Paulo', sobrenome: 'José', telefone: '756234654' },
   ];
 
+  alunoSubmit() {
+    console.log(this.alunoForm.value);
+  }
+
   alunoSelect(aluno: Aluno) {
     this.alunoSelecionado = aluno;
+    this.alunoForm.patchValue(aluno);
   }
 
   voltar() {
