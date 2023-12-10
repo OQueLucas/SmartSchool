@@ -9,6 +9,7 @@ import { Aluno } from '../models/Aluno';
 export class AlunosComponent {
   titulo = 'Alunos';
   public alunoSelecionado!: Aluno;
+  public textSimple: string;
 
   constructor() {}
 
