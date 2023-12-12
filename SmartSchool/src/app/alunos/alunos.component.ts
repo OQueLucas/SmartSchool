@@ -38,13 +38,14 @@ export class AlunosComponent implements OnInit {
         this.alunos = alunos;
       },
       error: (erro: any) => {
-        console.error(erro);
+        console.log(erro);
       },
     });
   }
 
   criarForm() {
     this.alunoForm = this.fb.group({
+      id: [''],
       nome: ['', Validators.required],
       sobrenome: ['', Validators.required],
       telefone: ['', Validators.required],
@@ -52,7 +53,19 @@ export class AlunosComponent implements OnInit {
   }
 
   alunoSubmit() {
-    console.log(this.alunoForm.value);
+    this.salvarAluno(this.alunoForm.value);
+  }
+
+  salvarAluno(aluno: Aluno) {
+    this.alunoService.put(aluno.id, aluno).subscribe({
+      next: (retorno: Aluno) => {
+        console.log(retorno);
+        this.carregarAlunos();
+      },
+      error: (error: any) => {
+        console.log(error);
+      }
+    });
   }
 
   alunoSelect(aluno: Aluno) {
