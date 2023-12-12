@@ -1,6 +1,6 @@
 <div class="row">
 
-  <div class="col-sm-6" *ngIf="professorSelecionado">
+  <div *ngIf="professorSelecionado">
     <div class="row">
       <div class="col-auto me-auto">
         <app-titulo [titulo]="'Professor: ' + professorSelecionado.id"></app-titulo>
@@ -15,10 +15,10 @@
         <label class="form-label">Nome</label>
         <input type="text" formControlName="nome" class="form-control">
       </div>
-      <div class="mb-3">
+      <!-- <div class="mb-3">
         <label class="form-label">Disciplina</label>
         <input type="text" formControlName="disciplina" class="form-control">
-      </div>
+      </div> -->
       <div class="form-group">
         <hr>
         <button class="btn btn-success" [disabled]="!ProfessorForm.valid">Enviar</button>
@@ -26,10 +26,11 @@
     </form>
   </div>
 
-  <div [ngClass]="{'col-sm-6': professorSelecionado, 'col-sm-12': !professorSelecionado}">
+  <div *ngIf="!professorSelecionado">
     <app-titulo [titulo]="titulo"></app-titulo>
     <table class="table table-hover">
       <thead class="table-light">
+        <th scope="col">Visualizar</th>
         <th scope="col">#</th>
         <th scope="col">Nome</th>
         <th scope="col">Disciplina</th>
@@ -37,12 +38,13 @@
       </thead>
       <tbody>
         <tr *ngFor="let prof of professores">
+          <th scope="row"><button class="btn btn-sm btn-warning" (click)="professorSelect(prof)">Detalhe</button></th>
           <th scope="row">{{prof.id}}</th>
           <td>{{prof.nome}}</td>
           <td>{{prof.disciplina}}</td>
           <td>
-            <div class="btn-group gap-2">
-              <button class="btn btn-sm btn-outline-warning" (click)="professorSelect(prof)">Detalhe</button>
+            <div class="btn-group">
+
               <button class="btn btn-sm btn-outline-primary" (click)="openModal(template)">Alunos</button>
             </div>
           </td>
