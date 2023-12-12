@@ -1,7 +1,4 @@
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace SmartSchool_WEBAPI.Models
 {
@@ -18,5 +15,6 @@ namespace SmartSchool_WEBAPI.Models
         public string Nome { get; set; }
         public int ProfessorID { get; set; }
         public Professor Professor { get; set; }
+        public  IEnumerable<AlunoDisciplina> AlunosDisciplinas { get; set; }
     }
 }
