@@ -1,4 +1,4 @@
-import { Component, OnInit, TemplateRef } from '@angular/core';
+import { Component, OnInit, TemplateRef, afterNextRender } from '@angular/core';
 import { Aluno } from '../models/Aluno';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
@@ -33,14 +33,14 @@ export class AlunosComponent implements OnInit {
   }
 
   carregarAlunos() {
-    this.alunoService.getAll().subscribe(
-      (alunos: Aluno[]) => {
+    this.alunoService.getAll().subscribe({
+      next: (alunos: Aluno[]) => {
         this.alunos = alunos;
       },
-      (erro: any) => {
+      error: (erro: any) => {
         console.error(erro);
-      }
-    );
+      },
+    });
   }
 
   criarForm() {
