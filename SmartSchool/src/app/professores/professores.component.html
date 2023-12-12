@@ -1,14 +1,9 @@
-<div class="row">
-
   <div *ngIf="professorSelecionado">
-    <div class="row">
-      <div class="col-auto me-auto">
-        <app-titulo [titulo]="'Professor: ' + professorSelecionado.id"></app-titulo>
+    <app-titulo [titulo]="(professorSelecionado.id === 0 ? 'Novo Professor' :  'Cód. Professor: ' + professorSelecionado.id)">
+      <div class="mt-1">
+        <button class="btn btn-warning" (click)="voltar()">Fechar</button>
       </div>
-      <div class="col-auto mt-1">
-        <button class="btn btn-sm btn-warning" (click)="voltar()">Fechar</button>
-      </div>
-    </div>
+        </app-titulo>
 
     <form [formGroup]="ProfessorForm" (submit)="professorSubmit()">
       <div class="mb-3">
@@ -21,13 +16,17 @@
       </div> -->
       <div class="form-group">
         <hr>
-        <button class="btn btn-success" [disabled]="!ProfessorForm.valid">Enviar</button>
+        <button class="btn btn-success" [disabled]="!ProfessorForm.valid">Salvar</button>
       </div>
     </form>
   </div>
 
   <div *ngIf="!professorSelecionado">
-    <app-titulo [titulo]="titulo"></app-titulo>
+    <app-titulo [titulo]="titulo">
+      <div class="mt-1">
+        <button class="btn btn-success" (click)="professorNovo()">Cadastrar Professor</button>
+      </div>
+    </app-titulo>
     <table class="table table-hover">
       <thead class="table-light">
         <th scope="col">Visualizar</th>
@@ -52,7 +51,6 @@
       </tbody>
     </table>
   </div>
-</div>
 
 <ng-template #template>
   <div class="modal-header">

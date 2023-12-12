@@ -15,6 +15,7 @@ export class AlunosComponent implements OnInit {
   public alunoSelecionado!: Aluno;
   public modalRef!: BsModalRef;
   public alunos: Aluno[];
+  public modo = 'post';
 
   openModal(template: TemplateRef<void>) {
     this.modalRef = this.modalService.show(template);
@@ -57,20 +58,27 @@ export class AlunosComponent implements OnInit {
   }
 
   salvarAluno(aluno: Aluno) {
-    this.alunoService.put(aluno.id, aluno).subscribe({
+    aluno.id === 0 ? (this.modo = 'post') : (this.modo = 'put');
+
+    this.alunoService[this.modo](aluno).subscribe({
       next: (retorno: Aluno) => {
         console.log(retorno);
         this.carregarAlunos();
       },
       error: (error: any) => {
         console.log(error);
-      }
+      },
     });
   }
 
   alunoSelect(aluno: Aluno) {
     this.alunoSelecionado = aluno;
     this.alunoForm.patchValue(aluno);
+  }
+
+  alunoNovo() {
+    this.alunoSelecionado = new Aluno();
+    this.alunoForm.patchValue(this.alunoSelecionado);
   }
 
   voltar() {

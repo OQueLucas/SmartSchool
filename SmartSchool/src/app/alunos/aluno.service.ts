@@ -24,8 +24,8 @@ export class AlunosService {
     return this.http.post(`${this.baseUrl}`, aluno);
   }
 
-  put(id: Number, aluno: Aluno) {
-    return this.http.put(`${this.baseUrl}/${id}`, aluno);
+  put(aluno: Aluno) {
+    return this.http.put(`${this.baseUrl}/${aluno.id}`, aluno);
   }
 
   delete(id: number) {
