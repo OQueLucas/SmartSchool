@@ -34,6 +34,7 @@
     <app-titulo [titulo]="titulo"></app-titulo>
     <table class="table table-hover">
       <thead class="table-light">
+        <th scope="col">Visualizar</th>
         <th scope="col">#</th>
         <th scope="col">Nome</th>
         <th scope="col">Sobrenome</th>
@@ -42,13 +43,13 @@
       </thead>
       <tbody>
         <tr *ngFor="let aluno of alunos">
+          <th><button (click)="alunoSelect(aluno)" class="btn btn-sm btn-warning">Detalhe</button></th>
           <th scope="row">{{aluno.id}}</th>
           <td>{{aluno.nome}}</td>
           <td>{{aluno.sobrenome}}</td>
           <td>{{aluno.telefone}}</td>
           <td>
-            <div class="btn-group gap-2">
-              <button (click)="alunoSelect(aluno)" class="btn btn-sm btn-outline-warning">Detalhe</button>
+            <div class="btn-group">
               <button class="btn btn-sm btn-outline-primary" (click)="openModal(template)">Professores</button>
               <button class="btn btn-sm btn-outline-danger">Desativar</button>
             </div>

@@ -38,6 +38,8 @@ internal class Program
 
         app.UseAuthorization();
 
+        app.UseCors(x => x.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
+
         app.MapControllers();
 
         app.Run();
